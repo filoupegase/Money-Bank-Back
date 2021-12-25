@@ -5,6 +5,7 @@ import { Button } from '../../_components/Button';
 import AccountCard from '../../_components/AccountCard';
 import { colorStyle } from '../../utils/style/ColorStyle';
 import { editingMode } from '../../redux_store/action';
+import EditNameForm from '../../_components/EditNameForm';
 
 
 const USER_TRANSACTIONS_DATA = [
@@ -37,9 +38,8 @@ function UserProfile() {
             <EditContainer>
               { editMode ? '' : <h3>Tony Jarvis!</h3> }
               { editMode
-                  ? 'eddit Component'
+                  ? <EditNameForm />
                   : <Button
-                      className="btn--edit"
                       type="button"
                       text="Edit Name"
                       center={ true }
