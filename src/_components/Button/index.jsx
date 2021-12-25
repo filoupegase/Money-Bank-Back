@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { colorStyle } from '../../utils/style/ColorStyle';
 
 
-export function Button({ type, text, fullWidth = false, center = false, handleClick }) {
+export function Button({ type, text, fullWidth = false, center = false, onClick }) {
   return (
       <StyledButton
           type={ type }
           fullWidth={ fullWidth }
           center={ center }
-          onClick={ handleClick }
+          onClick={ onClick }
       >
         { text }
       </StyledButton>

@@ -1,11 +1,13 @@
 import initialState from './initialState';
+import { EDIT_MODE } from './action';
 
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'salut':
+    case EDIT_MODE:
       return {
-        initialState
+        ...state,
+        editMode: !state.editMode
       };
     default:
       return state;
