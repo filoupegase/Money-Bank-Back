@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.css';
+import { Link } from 'react-router-dom';
 import BankBankLogo from '../../assets/img/argentBankLogo.png';
 
 
@@ -14,10 +15,10 @@ const Header = () => {
           />
         </a>
         <div>
-          <a className="main-nav-item" href="./sign-in.html">
-            <i className="fa fa-user-circle" />
+          <Link className="main-nav-item" to="/login">
+            <i style={ { paddingRight: 6 } } className="fa fa-user-circle" />
             Sign In
-          </a>
+          </Link>
         </div>
       </nav>
   );

@@ -1,5 +1,3 @@
-import Footer from '../../_components/Footer';
-import Header from '../../_components/Header';
 import money from '../../assets/img/icon-money.png';
 import chat from '../../assets/img/icon-chat.png';
 import security from '../../assets/img/icon-security.png';
@@ -9,7 +7,6 @@ import './Home.css';
 function Home() {
   return (
       <>
-        <Header />
         <main>
           <div className="hero">
             <section className="hero-content">
@@ -33,7 +30,7 @@ function Home() {
             <div className="feature-item">
               <img
                   src={ money }
-                  alt="Chat Icon"
+                  alt="Chat Money"
                   className="feature-icon"
               />
               <h3 className="feature-item-title">More savings means higher rates</h3>
@@ -44,7 +41,7 @@ function Home() {
             <div className="feature-item">
               <img
                   src={ security }
-                  alt="Chat Icon"
+                  alt="Chat Security"
                   className="feature-icon"
               />
               <h3 className="feature-item-title">Security you can trust</h3>
@@ -55,7 +52,6 @@ function Home() {
             </div>
           </section>
         </main>
-        <Footer />
       </>
   );
 }
