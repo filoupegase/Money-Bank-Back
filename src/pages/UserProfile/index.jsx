@@ -29,7 +29,6 @@ function UserProfile() {
         <UserProfileMain>
           <UserProfileContainer>
             <h2>Welcome back</h2>
-
             <EditContainer>
               <h3>Tony Jarvis!</h3>
               <Button
@@ -40,9 +39,7 @@ function UserProfile() {
                   /*handleClick={toggleEditionMode}*/
               />
             </EditContainer>
-
             <h2 className="sr-only">Accounts</h2>
-
             { USER_TRANSACTIONS_DATA.map(({ accountName, amount, balanceType }, idx) => (
                 <AccountCard
                     key={ `account-card-${ idx }` }

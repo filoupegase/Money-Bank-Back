@@ -1,8 +1,27 @@
 import money from '../../assets/img/icon-money.png';
 import chat from '../../assets/img/icon-chat.png';
 import security from '../../assets/img/icon-security.png';
+import HomeCard from '../../_components/HomeCard';
 import './Home.css';
 
+
+const Home_CARD_DATA = [
+  {
+    logo: money,
+    title: 'More savings means higher rates',
+    description: 'The more you save with us, the higher your interest rate will be!'
+  },
+  {
+    logo: chat,
+    title: 'You are our #1 priority',
+    description: 'Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.'
+  },
+  {
+    logo: security,
+    title: 'Security you can trust',
+    description: 'We use top of the line encryption to make sure your data and money is always safe.'
+  }
+];
 
 function Home() {
   return (
@@ -18,38 +37,14 @@ function Home() {
             </section>
           </div>
           <section className="features">
-            <h2 className="sr-only">Features</h2>
-            <div className="feature-item">
-              <img src={ chat } alt="Chat Icon" className="feature-icon" />
-              <h3 className="feature-item-title">You are our #1 priority</h3>
-              <p>
-                Need to talk to a representative? You can get in touch through our
-                24/7 chat or through a phone call in less than 5 minutes.
-              </p>
-            </div>
-            <div className="feature-item">
-              <img
-                  src={ money }
-                  alt="Chat Money"
-                  className="feature-icon"
-              />
-              <h3 className="feature-item-title">More savings means higher rates</h3>
-              <p>
-                The more you save with us, the higher your interest rate will be!
-              </p>
-            </div>
-            <div className="feature-item">
-              <img
-                  src={ security }
-                  alt="Chat Security"
-                  className="feature-icon"
-              />
-              <h3 className="feature-item-title">Security you can trust</h3>
-              <p>
-                We use top of the line encryption to make sure your data and money
-                is always safe.
-              </p>
-            </div>
+            { Home_CARD_DATA.map(({ logo, title, description }, index) => (
+                <HomeCard
+                    key={ `account-card-${ index }` }
+                    logo={ logo }
+                    title={ title }
+                    description={ description }
+                />))
+            }
           </section>
         </main>
       </>
