@@ -7,7 +7,7 @@ export const colorStyle = {
   secondary: {
     main: '#12002b'
   },
-  danger500: '#e60000',
+  danger: '#e60000',
   neutral300: '#ccc',
   neutral400: '#aaa',
   neutral700: '#2c3e50',
