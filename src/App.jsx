@@ -4,7 +4,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login';
 import UserProfile from './pages/UserProfile';
 import Header from './_components/Header';
-import Footer from '../src/_components/Footer';
+import Footer from './_components/Footer';
 
 
 function App() {
