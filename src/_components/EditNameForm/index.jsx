@@ -9,6 +9,11 @@ import { colorStyle } from '../../utils/style/ColorStyle';
 function EditNameForm() {
   const dispatch = useDispatch();
 
+  const handleInputChange = (event) => {
+    const inputName = event.target.value;
+    console.log(inputName);
+  };
+
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
   };
@@ -16,6 +21,18 @@ function EditNameForm() {
   return (
       <EditFormContainer>
         <form onSubmit={ handleEditFormSubmit }>
+          <input
+              type="text"
+              id="first-name"
+              placeholder="First name"
+              onChange={ handleInputChange }
+          />
+          <input
+              type="text"
+              id="last-name"
+              placeholder="Last name"
+              onChange={ handleInputChange }
+          />
           <ButtonsContainer>
             <Button
                 type="submit"
@@ -47,8 +64,7 @@ const EditFormContainer = styled.div`
     &::placeholder {
       color: ${ colorStyle.neutral400 };
     }
-  }
-`;
+}`;
 
 const ButtonsContainer = styled.div`
   display: flex;
@@ -65,7 +81,6 @@ const ButtonsContainer = styled.div`
       color: white;
       background: ${ colorStyle.primary.primary300 };
     }
-  }
-`;
+  }`;
 
 export default EditNameForm;
