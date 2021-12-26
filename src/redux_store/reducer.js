@@ -1,5 +1,12 @@
 import initialState from './initialState';
-import { EDIT_MODE, USER_INFO_SUCCESS, USER_INFO_ERROR, LOGIN_SUCCESS, LOGIN_ERROR } from './actionType';
+import {
+  EDIT_MODE,
+  USER_INFO_SUCCESS,
+  USER_INFO_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  LOGOUT_REQUEST
+} from './actionType';
 
 
 const reducer = (state = initialState, action) => {
@@ -32,6 +39,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         error: true
+      };
+    case LOGOUT_REQUEST:
+      return {
+        initialState
       };
     default:
       return state;

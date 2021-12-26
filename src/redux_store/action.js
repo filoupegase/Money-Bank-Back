@@ -1,4 +1,4 @@
-import { EDIT_MODE, USER_INFO_SUCCESS, USER_INFO_ERROR, LOGIN_SUCCESS, LOGIN_ERROR } from './actionType';
+import { EDIT_MODE, USER_INFO_SUCCESS, USER_INFO_ERROR, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_REQUEST } from './actionType';
 import dataBasePath from '../services/dataBasePath';
 
 
@@ -6,6 +6,10 @@ let token = '';
 
 export const editingMode = () => ({
   type: EDIT_MODE
+});
+
+export const logout = () => ({
+  type: LOGOUT_REQUEST
 });
 
 export const loginRequest = (email, password) => {

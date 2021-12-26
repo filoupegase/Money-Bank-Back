@@ -6,6 +6,7 @@ import AccountCard from '../../_components/AccountCard';
 import { colorStyle } from '../../utils/style/ColorStyle';
 import { editingMode, getUserProfile } from '../../redux_store/action';
 import EditNameForm from '../../_components/EditNameForm';
+import { Navigate } from 'react-router-dom';
 
 
 const USER_TRANSACTIONS_DATA = [
@@ -27,13 +28,17 @@ const USER_TRANSACTIONS_DATA = [
 ];
 
 function UserProfile() {
-  const dispatch = useDispatch();
   const editMode = useSelector((state) => state.editMode);
+  const reduxState = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserProfile());
   }, [dispatch]);
 
+  if (!reduxState.logged) {
+    return <Navigate to="/" />;
+  }
   return (
       <>
         <UserProfileMain>

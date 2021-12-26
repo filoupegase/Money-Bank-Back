@@ -3,3 +3,4 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const USER_INFO_SUCCESS = 'USER_INFO_SUCCESS';
 export const USER_INFO_ERROR = 'USER_INFO_ERROR';
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
