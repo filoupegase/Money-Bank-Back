@@ -1,18 +1,39 @@
-import { EDIT_MODE, USER_INFO_SUCCESS } from './actionType';
+import { EDIT_MODE, USER_INFO_SUCCESS, USER_INFO_ERROR, LOGIN_SUCCESS, LOGIN_ERROR } from './actionType';
 import dataBasePath from '../services/dataBasePath';
 
+
+let token = '';
 
 export const editingMode = () => ({
   type: EDIT_MODE
 });
 
+export const loginRequest = (email, password) => {
+  return (dispatch) => {
+    dataBasePath.post('user/login', { email, password })
+        .then((res) => {
+          token = res.data.body.token;
+          localStorage.setItem('token', token);
+          dispatch({ type: LOGIN_SUCCESS, payload: { email, token } });
+        })
+        .catch((error) => {
+          dispatch({ type: LOGIN_ERROR });
+          console.log('Error post loginRequest :', error);
+        });
+  };
+};
+
+
 export const getUserProfile = () => {
   return (dispatch) => {
-    dataBasePath.post('user/profile', {},
-    /*    { headers: { Authorization: `Bearer` + localStorage.getItem('token') } }*/
+    dataBasePath.post('user/profile', {}, {
+          headers: {
+            Authorization: `Bearer` + localStorage.getItem('token')
+          }
+        }
     )
         .then((res) => {
-          console.log(res);
+          console.log('Response', res);
           dispatch({
             type: USER_INFO_SUCCESS,
             payload: {
@@ -22,6 +43,7 @@ export const getUserProfile = () => {
           });
         })
         .catch((error) => {
+          dispatch({ type: USER_INFO_ERROR });
           console.log('Error post userInfo :', error);
         });
   };
