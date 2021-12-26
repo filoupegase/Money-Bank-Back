@@ -1,10 +1,15 @@
 import React from 'react';
-import './header.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './header.css';
 import BankBankLogo from '../../assets/img/argentBankLogo.png';
 
 
 const Header = () => {
+  const token = useSelector((state) => state);
+  console.log('token', token)
+  const dispatch = useDispatch();
+
   return (
       <nav className="main-nav">
         <a className="main-nav-logo" href="/">
@@ -15,10 +20,12 @@ const Header = () => {
           />
         </a>
         <div>
+          <i style={ { paddingRight: 6 } } className="fa fa-user-circle" />
+
           <Link className="main-nav-item" to="/login">
-            <i style={ { paddingRight: 6 } } className="fa fa-user-circle" />
             Sign In
           </Link>
+
         </div>
       </nav>
   );

@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { EDIT_MODE } from './action';
+import { EDIT_MODE } from './actionType';
 
 
 const reducer = (state = initialState, action) => {
