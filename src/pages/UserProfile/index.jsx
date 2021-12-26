@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../_components/Button';
 import AccountCard from '../../_components/AccountCard';
 import { colorStyle } from '../../utils/style/ColorStyle';
-import { editingMode, userInfo } from '../../redux_store/action';
+import { editingMode, getUserProfile } from '../../redux_store/action';
 import EditNameForm from '../../_components/EditNameForm';
 
 
@@ -31,8 +31,8 @@ function UserProfile() {
   const editMode = useSelector((state) => state.editMode);
 
   useEffect(() => {
-    dispatch(userInfo())
-  }, [dispatch])
+    dispatch(getUserProfile());
+  }, [dispatch]);
 
   return (
       <>

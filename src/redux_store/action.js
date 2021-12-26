@@ -6,7 +6,7 @@ export const editingMode = () => ({
   type: EDIT_MODE
 });
 
-export const userInfo = () => {
+export const getUserProfile = () => {
   return (dispatch) => {
     dataBasePath.post('user/profile', {},
     /*    { headers: { Authorization: `Bearer` + localStorage.getItem('token') } }*/
