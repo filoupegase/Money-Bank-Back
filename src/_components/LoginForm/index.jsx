@@ -37,11 +37,10 @@ function LoginForm() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" onChange={ handleInputChange } />
           </LabeledInput>
-          {/*<LabeledCheckbox>
+          <LabeledCheckbox>
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
-          </LabeledCheckbox>*/ }
-
+          </LabeledCheckbox>
           <ErrorMessage className={ submitError ? 'show-error' : '' }>
             { submitError ? 'Incorrect email or password' : '' }
           </ErrorMessage>

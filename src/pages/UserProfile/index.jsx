@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../_components/Button';
 import AccountCard from '../../_components/AccountCard';
 import { colorStyle } from '../../utils/style/ColorStyle';
-import { editingMode } from '../../redux_store/action';
+import { editingMode, userInfo } from '../../redux_store/action';
 import EditNameForm from '../../_components/EditNameForm';
 
 
@@ -29,7 +29,11 @@ const USER_TRANSACTIONS_DATA = [
 function UserProfile() {
   const dispatch = useDispatch();
   const editMode = useSelector((state) => state.editMode);
-  console.log(editMode);
+
+  useEffect(() => {
+    dispatch(userInfo())
+  }, [dispatch])
+
   return (
       <>
         <UserProfileMain>

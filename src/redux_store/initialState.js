@@ -1,3 +1,10 @@
 export default {
-  editMode: false
+  editMode: false,
+  logged: false,
+  email: '',
+  id: '',
+  firstName: '',
+  lastName: '',
+  token: '',
+  error: false
 };

@@ -7,7 +7,7 @@ import BankBankLogo from '../../assets/img/argentBankLogo.png';
 
 const Header = () => {
   const token = useSelector((state) => state);
-  console.log('token', token)
+  console.log(token);
   const dispatch = useDispatch();
 
   return (

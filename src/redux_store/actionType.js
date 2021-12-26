@@ -1,1 +1,2 @@
 export const EDIT_MODE = 'EDIT_MODE';
+export const USER_INFO_SUCCESS = 'USER_INFO_SUCCESS';
