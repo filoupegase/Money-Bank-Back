@@ -1,50 +1,63 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { colorStyle } from '../../utils/style/ColorStyle';
 import { Button } from '../Button';
+import { loginRequest } from '../../redux_store/action';
 
 
 function LoginForm() {
-  const [formIsSubmited, setFormIsSubmited] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
-  const [userInputs, setUserInputs] = useState({
-    email: '',
-    password: ''
-  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const reduxState = useSelector((state) => state);
+  const dispatch = useDispatch();
 
-
-  const handleLoginSubmit = (event) => {
-    const inputName = event.target.value;
-
-    event.preventDefault();
-
-    setFormIsSubmited(true);
-  };
 
   const handleInputChange = (event) => {
-    const inputName = event.target.value;
-    console.log(inputName);
+    event.target.id === 'username'
+        ? setEmail(event.target.value)
+        : setPassword(event.target.value);
   };
 
+  const handleLoginSubmit = (event) => {
+    event.preventDefault();
+    dispatch(loginRequest(email, password));
+  };
+
+  if (reduxState.logged) {
+    return <Navigate to="/profile" />;
+  }
   return (
       <>
         <form onSubmit={ handleLoginSubmit }>
           <LabeledInput>
-            <label htmlFor="email">E-mail</label>
-            <input type="email" id="email" onChange={ handleInputChange } />
+            <label htmlFor="username">E-mail</label>
+            <input
+                type="text"
+                id="username"
+                value={ email }
+                autoComplete="username"
+                onChange={ handleInputChange }
+            />
           </LabeledInput>
           <LabeledInput>
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={ handleInputChange } />
+            <input
+                type="password"
+                id="password"
+                value={ password }
+                autoComplete="current-password"
+                onChange={ handleInputChange }
+            />
           </LabeledInput>
           <LabeledCheckbox>
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </LabeledCheckbox>
-          <ErrorMessage className={ submitError ? 'show-error' : '' }>
-            { submitError ? 'Incorrect email or password' : '' }
+          <ErrorMessage className={ reduxState.error ? 'show-error' : '' }>
+            { reduxState.error ? 'Incorrect email or password' : '' }
           </ErrorMessage>
-
           <Button type="submit" text="Sign In" fullWidth={ true } />
         </form>
       </>
