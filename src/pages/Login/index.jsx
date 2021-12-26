@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colorStyle } from '../../utils/style/ColorStyle';
+import LoginForm from '../../_components/LoginForm';
 
 
 function Login() {
@@ -10,7 +11,7 @@ function Login() {
           <i className="fa fa-user-circle" />
 
           <h2>Sign In</h2>
-
+          <LoginForm />
 
         </LoginFormContainer>
       </LoginMain>
