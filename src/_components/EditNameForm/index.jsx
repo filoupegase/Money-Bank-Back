@@ -1,36 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { editingMode } from '../../redux_store/callApiFunction';
+import { changeUserInfo, editingMode } from '../../redux_store/callApiFunction';
 import { Button } from '../Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { colorStyle } from '../../utils/style/ColorStyle';
 
 
 function EditNameForm() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const reduxState = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
-    const inputName = event.target.value;
-    console.log(inputName);
+    event.target.id === 'first-name' ? setFirstName(event.target.value) : setLastName(event.target.value);
   };
 
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
+    dispatch(changeUserInfo(firstName, lastName));
+    dispatch(editingMode());
   };
 
   return (
       <EditFormContainer>
         <form onSubmit={ handleEditFormSubmit }>
           <input
+              required
               type="text"
               id="first-name"
-              placeholder="First name"
+              placeholder={ reduxState.firstName }
               onChange={ handleInputChange }
           />
           <input
+              required
               type="text"
               id="last-name"
-              placeholder="Last name"
+              placeholder={ reduxState.lastName }
               onChange={ handleInputChange }
           />
           <ButtonsContainer>

@@ -45,7 +45,7 @@ function UserProfile() {
           <UserProfileContainer>
             <h2>Welcome back</h2>
             <EditContainer>
-              { reduxState.editMode ? '' : <h3>Tony Jarvis!</h3> }
+              { reduxState.editMode ? '' : <h3>{ reduxState.firstName } { reduxState.lastName }!</h3> }
               { reduxState.editMode
                   ? <EditNameForm />
                   : <Button
