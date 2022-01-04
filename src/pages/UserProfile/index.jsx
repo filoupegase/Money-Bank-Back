@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../_components/Button';
 import AccountCard from '../../_components/AccountCard';
 import { colorStyle } from '../../utils/style/ColorStyle';
 import { editingMode, getUserProfile } from '../../redux_store/callApiFunction';
 import EditNameForm from '../../_components/EditNameForm';
-import { Navigate } from 'react-router-dom';
 
 
 const USER_TRANSACTIONS_DATA = [
@@ -30,7 +30,6 @@ const USER_TRANSACTIONS_DATA = [
 function UserProfile() {
   const reduxState = useSelector((state) => state);
   const dispatch = useDispatch();
-  console.log(reduxState);
 
   useEffect(() => {
     dispatch(getUserProfile());
