@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../_components/Button';
 import AccountCard from '../../_components/AccountCard';
 import { colorStyle } from '../../utils/style/ColorStyle';
-import { editingMode, getUserProfile } from '../../redux_store/action';
+import { editingMode, getUserProfile } from '../../redux_store/callApiFunction';
 import EditNameForm from '../../_components/EditNameForm';
 import { Navigate } from 'react-router-dom';
 

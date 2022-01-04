@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { colorStyle } from '../../utils/style/ColorStyle';
 import { Button } from '../Button';
-import { loginRequest } from '../../redux_store/action';
+import { loginRequest } from '../../redux_store/callApiFunction';
 
 
 function LoginForm() {

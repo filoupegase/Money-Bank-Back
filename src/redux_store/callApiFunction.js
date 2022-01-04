@@ -37,11 +37,10 @@ export const loginRequest = (email, password) => {
 export const getUserProfile = () => {
   return (dispatch) => {
     dataBasePath.post('user/profile', {}, {
-          headers: {
-            Authorization: `Bearer` + localStorage.getItem('token')
-          }
-        }
-    )
+      headers: {
+        Authorization: `Bearer` + localStorage.getItem('token')
+      }
+    })
         .then((res) => {
           dispatch({
             type: USER_INFO_SUCCESS,
@@ -54,6 +53,23 @@ export const getUserProfile = () => {
         .catch((error) => {
           dispatch({ type: USER_INFO_ERROR });
           console.log('Error post userInfo :', error);
+        });
+  };
+};
+
+export const changeUserInfo = (firstName, lastName) => {
+  return (dispatch) => {
+    dataBasePath.put('user/profile', { firstName, lastName }, {
+      headers: {
+        Authorization: `Bearer` + localStorage.getItem('token')
+      }
+    })
+        .then(() => {
+          dispatch({ type: USER_INFO_SUCCESS, payload: ({ firstName, lastName }) });
+        })
+        .catch((error) => {
+          dispatch({ type: USER_INFO_ERROR });
+          console.log('Error put changeUserInfo :', error);
         });
   };
 };

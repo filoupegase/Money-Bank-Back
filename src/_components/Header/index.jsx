@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BankBankLogo from '../../assets/img/argentBankLogo.png';
-import { logout } from '../../redux_store/action';
+import { logout } from '../../redux_store/callApiFunction';
 import './header.css';
 
 

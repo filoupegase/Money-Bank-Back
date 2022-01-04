@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { editingMode } from '../../redux_store/action';
+import { editingMode } from '../../redux_store/callApiFunction';
 import { Button } from '../Button';
 import { useDispatch } from 'react-redux';
 import { colorStyle } from '../../utils/style/ColorStyle';
