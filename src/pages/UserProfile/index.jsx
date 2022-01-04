@@ -28,9 +28,9 @@ const USER_TRANSACTIONS_DATA = [
 ];
 
 function UserProfile() {
-  const editMode = useSelector((state) => state.editMode);
   const reduxState = useSelector((state) => state);
   const dispatch = useDispatch();
+  console.log(reduxState);
 
   useEffect(() => {
     dispatch(getUserProfile());
@@ -45,8 +45,8 @@ function UserProfile() {
           <UserProfileContainer>
             <h2>Welcome back</h2>
             <EditContainer>
-              { editMode ? '' : <h3>Tony Jarvis!</h3> }
-              { editMode
+              { reduxState.editMode ? '' : <h3>Tony Jarvis!</h3> }
+              { reduxState.editMode
                   ? <EditNameForm />
                   : <Button
                       type="button"

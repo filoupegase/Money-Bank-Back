@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './header.css';
 import BankBankLogo from '../../assets/img/argentBankLogo.png';
 import { logout } from '../../redux_store/action';
+import './header.css';
 
 
 const Header = () => {
@@ -21,22 +21,22 @@ const Header = () => {
           />
         </a>
         <div>
-          { reduxState.logged ?
-              (<>
-                <Link to="/profile">
+          { reduxState.logged ? (
+                  <>
+                    <Link to="/profile">
                     <span className="main-nav-item">
                         <i style={ { paddingRight: 6 } } className="fa fa-user-circle" />
                       { reduxState.firstName }
                     </span>
-                </Link>
-                <Link className="main-nav-item"
-                      onClick={ () => dispatch(logout()) }
-                      to="/"
-                >
-                  <i style={ { paddingRight: 6 } } className="fa fa-sign-out" />
-                  Sign Out
-                </Link>
-              </>)
+                    </Link>
+                    <Link className="main-nav-item"
+                          onClick={ () => dispatch(logout()) }
+                          to="/"
+                    >
+                      <i style={ { paddingRight: 6 } } className="fa fa-sign-out" />
+                      Sign Out
+                    </Link>
+                  </>)
               :
               (<>
                 <i style={ { paddingRight: 6 } } className="fa fa-user-circle" />

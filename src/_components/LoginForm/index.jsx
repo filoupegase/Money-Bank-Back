@@ -26,7 +26,7 @@ function LoginForm() {
   };
 
   if (reduxState.logged) {
-    return <Navigate to="/profile" />;
+    return (<Navigate to="/profile" />);
   }
   return (
       <>

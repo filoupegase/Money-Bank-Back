@@ -1,4 +1,11 @@
-import { EDIT_MODE, USER_INFO_SUCCESS, USER_INFO_ERROR, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_REQUEST } from './actionType';
+import {
+  EDIT_MODE,
+  USER_INFO_SUCCESS,
+  USER_INFO_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  LOGOUT_REQUEST
+} from './actionType';
 import dataBasePath from '../services/dataBasePath';
 
 
@@ -27,7 +34,6 @@ export const loginRequest = (email, password) => {
   };
 };
 
-
 export const getUserProfile = () => {
   return (dispatch) => {
     dataBasePath.post('user/profile', {}, {
@@ -37,7 +43,6 @@ export const getUserProfile = () => {
         }
     )
         .then((res) => {
-          console.log('Response', res);
           dispatch({
             type: USER_INFO_SUCCESS,
             payload: {
