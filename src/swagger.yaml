@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  description: "Possible API endpoints for phase two of Argent Bank project."
+  description: "Possible endpoints API for phase two of Argent Bank project."
   version: "1.0.0"
   title: "Argent Bank API Documentation"
   termsOfService: "http://swagger.io/terms/"
@@ -8,115 +8,100 @@ info:
 host: "localhost:3001"
 basePath: "/api/v2"
 tags:
-  - name: "User Account"
-    description: "Endpoints for user's account data"
-  - name: "User Transactions"
-    description: "Endpoints for user's transactions data"
+  - name: "User Profile"
+    description: "Endpoints for user profile"
+
+  - name: "User Transactions View"
+    description: "Endpoints for all transactions viewer"
+
+  - name: "User Transaction Id detail"
+    description: "Endpoints for user's transactions"
+
 schemes:
   - "https"
   - "http"
 paths:
-  /user/account:
-    get:
+  /user/profile:
+    post:
+      security:
+        - Bearer: [ ]
       tags:
-        - "User Account"
-      summary: "Summary of user's accounts"
-      description: "API to fetch user's account summary"
-      operationId: "userAccount"
-      consumes:
-        - "application/json"
+        - User Profile
+      summary: User Profile API
+      description: API for fetching a user profile
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
       produces:
-        - "application/json"
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: [ ]
+      tags:
+        - User Profile
+      summary: User Profile API
+      description: API for updating a user profile
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/UserProfile'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/profile/transactionsView/${transactionId}:
+    post:
+      security:
+        - Bearer: [ ]
+      tags:
+        - User Transactions View
+      summary: User Transactions
+      description: API for fetching a transaction detail
       parameters:
         - in: "header"
           name: "Authorization"
           type: "string"
           description: "Attach Bearer JWT Token"
           required: true
-      responses:
-        "200":
-          description: "User account details retrieved succesfully"
-          schema:
-            items:
-              $ref: "#/definitions/Account"
-        "400":
-          description: "Invalid token"
-        "500":
-          description: "Internal server error"
-
-  /user/account/transaction/${accountTypeID}:
-    get:
-      tags:
-        - "User Transactions"
-      summary: "Transactions for the selected type of account"
-      description: "API to fetch user's transactions in one type of account"
-      operationId: "userTransaction"
-      consumes:
-        - "application/json"
       produces:
-        - "application/json"
-      parameters:
-        - in: "header"
-          name: "Authorization"
-          type: "string"
-          description: "Attach Bearer JWT Token"
-          required: true
-        - in: path
-          name: accountTypeID
-          type: integer
-          required: true
-          description: "Numeric ID of the type of transaction to get"
+        - application/json
       responses:
-        "200":
-          description: "User transactions retrieved succesfully"
+        '200':
+          description: User profile retrieved successully
           schema:
-            items:
-              $ref: "#/definitions/Transactions"
-        "400":
-          description: "Invalid token"
-        "500":
-          description: "Internal server error"
-
-  /user/account/transaction/${accountTypeID}/${transactionID}:
-    get:
-      tags:
-        - "User Transactions"
-      summary: "Transaction details for the selected transaction ID"
-      description: "API to fetch user's transaction details"
-      operationId: "userTransactionDetail"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
-      parameters:
-        - in: "header"
-          name: "Authorization"
-          type: "string"
-          description: "Attach Bearer JWT Token"
-          required: true
-        - in: path
-          name: accountTypeID
-          type: integer
-          required: true
-          description: "Numeric ID of the type of transaction to get"
-        - in: path
-          name: transactionID
-          type: integer
-          required: true
-          description: "Numeric ID of the transaction to get"
-      responses:
-        "200":
-          description: "User transaction details retrieved succesfully"
-          schema:
-            items:
-              $ref: "#/definitions/Transactions"
-        "400":
-          description: "Invalid token"
-        "500":
-          description: "Internal server error"
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
     put:
       tags:
-        - "User Transactions"
+        - User Transactions View
       summary: "Update transaction details"
       description: ""
       operationId: "updateSavings"
@@ -175,24 +160,43 @@ paths:
           description: "Invalid fields"
         "500":
           description: "Internal server error"
-
+  /user/profile/transactionsView/${transactionId}/detail:
+    get:
+      security:
+        - Bearer: [ ]
+      tags:
+        - "User Transaction Id detail"
+      summary: User Transactions
+      description: API for fetching a transaction detail
+      parameters:
+        - in: "header"
+          name: "Authorization"
+          type: "string"
+          description: "Attach Bearer JWT Token"
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+          
 definitions:
-  Account:
-    type: "object"
+  User Profile:
+    type: object
     properties:
-      id:
-        type: "integer"
-        format: "int32"
-      body:
-        type: "object"
-        properties:
-          balance:
-            type: "integer"
-          type:
-            type: "string"
+      firstName:
+        type: string
+      lastName:
+        type: string
 
-  Transactions:
-    type: "object"
+  User Transactions View:
+    type: object
     properties:
       id:
         type: "integer"
