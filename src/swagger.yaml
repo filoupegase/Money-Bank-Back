@@ -165,7 +165,7 @@ paths:
       security:
         - Bearer: [ ]
       tags:
-        - "User Transaction Id detail"
+        - User Transaction Id detail
       summary: User Transactions
       description: API for fetching a transaction detail
       parameters:
@@ -185,7 +185,37 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-          
+    put:
+      security:
+        - Bearer: [ ]
+      tags:
+        - User Transaction Id detail
+      summary: User Transactions
+      description: ""
+      operationId: "updateSavings"
+        consumes:
+          - "application/json"
+          produces:
+            - "application/json"
+          responses:
+            "200":
+              description: Transaction details updated succesfully"
+              schema:
+                items:
+                  type: "object"
+                  properties:
+                    status:
+                      type: "integer"
+                      format: "int32"
+                    message:
+                      type: "string"
+                    body:
+                      type: "object"
+                      properties:
+                        category:
+                          type: "string"
+                        notes:
+                          type: "string"
 definitions:
   User Profile:
     type: object
@@ -194,7 +224,6 @@ definitions:
         type: string
       lastName:
         type: string
-
   User Transactions View:
     type: object
     properties:
@@ -216,3 +245,10 @@ definitions:
             type: "string"
           notes:
             type: "string"
+          User Transaction Id detail:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
