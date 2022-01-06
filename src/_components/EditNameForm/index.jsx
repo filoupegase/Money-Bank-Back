@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { changeUserInfo, editingMode } from '../../redux_store/callApiFunction';
+import { updateUserInfo, editingMode } from '../../redux_store/callApiFunction';
 import { Button } from '../Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { colorStyle } from '../../utils/style/ColorStyle';
@@ -18,7 +18,7 @@ function EditNameForm() {
 
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
-    dispatch(changeUserInfo(firstName, lastName));
+    dispatch(updateUserInfo(firstName, lastName));
     dispatch(editingMode());
   };
 

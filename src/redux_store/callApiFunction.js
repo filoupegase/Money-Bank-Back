@@ -6,7 +6,7 @@ import {
   LOGIN_ERROR,
   LOGOUT_REQUEST
 } from './actionType';
-import dataBasePath from '../services/dataBasePath';
+import dataBasePath from '../services/callApiPath';
 
 
 let token = '';
@@ -57,7 +57,7 @@ export const getUserProfile = () => {
   };
 };
 
-export const changeUserInfo = (firstName, lastName) => {
+export const updateUserInfo = (firstName, lastName) => {
   return (dispatch) => {
     dataBasePath.put('user/profile', { firstName, lastName }, {
       headers: {
@@ -69,7 +69,7 @@ export const changeUserInfo = (firstName, lastName) => {
         })
         .catch((error) => {
           dispatch({ type: USER_INFO_ERROR });
-          console.log('Error put changeUserInfo :', error);
+          console.log('Error put updateUserInfo :', error);
         });
   };
 };

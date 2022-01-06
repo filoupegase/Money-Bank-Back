@@ -12,6 +12,7 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const reduxState = useSelector((state) => state);
   const dispatch = useDispatch();
+  console.log(reduxState)
 
 
   const handleInputChange = (event) => {
